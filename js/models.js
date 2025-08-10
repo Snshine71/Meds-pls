@@ -71,12 +71,30 @@ class Database {
         const medicalFeedback = this.getMedicalFeedback();
         
         // Ensure imported data has the correct userId
-        data.appointments.forEach(a => { a.userId = userId; appointments.push(a); });
-        data.doctors.forEach(d => { d.userId = userId; doctors.push(d); });
-        data.medications.forEach(m => { m.userId = userId; medications.push(m); });
-        data.diagnoses.forEach(d => { d.userId = userId; diagnoses.push(d); });
-        data.testResults.forEach(t => { t.userId = userId; testResults.push(t); });
-        data.medicalFeedback.forEach(f => { f.userId = userId; medicalFeedback.push(f); });
+        (data.appointments || []).forEach(a => {
+            a.userId = userId;
+            appointments.push(a);
+        });
+        (data.doctors || []).forEach(d => {
+            d.userId = userId;
+            doctors.push(d);
+        });
+        (data.medications || []).forEach(m => {
+            m.userId = userId;
+            medications.push(m);
+        });
+        (data.diagnoses || []).forEach(d => {
+            d.userId = userId;
+            diagnoses.push(d);
+        });
+        (data.testResults || []).forEach(t => {
+            t.userId = userId;
+            testResults.push(t);
+        });
+        (data.medicalFeedback || []).forEach(f => {
+            f.userId = userId;
+            medicalFeedback.push(f);
+        });
         
         // Save updated data
         localStorage.setItem('medicalTracker_appointments', JSON.stringify(appointments));
