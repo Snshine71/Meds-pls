@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Sand Table">
+  <rect width="64" height="64" rx="10" fill="#0F1B2D" />
+  <!-- mission-timeline waypoints: three squares on a connecting rail -->
+  <line x1="14" y1="32" x2="50" y2="32" stroke="#1D5FA8" stroke-width="3" />
+  <rect x="10" y="28" width="8" height="8" fill="#2E7D5B" />
+  <rect x="28" y="28" width="8" height="8" fill="#1D5FA8" />
+  <rect x="46" y="28" width="8" height="8" fill="#7FA8CE" />
+</svg>

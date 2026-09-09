@@ -1,0 +1,75 @@
+/* Self-hosted fonts (spec §8): Saira Semi Condensed (display), Source Serif 4
+   (manuscript body), Inter (UI). Via @fontsource. */
+@import '@fontsource/saira-semi-condensed/500.css';
+@import '@fontsource/saira-semi-condensed/600.css';
+@import '@fontsource/source-serif-4/400.css';
+@import '@fontsource/source-serif-4/400-italic.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens (spec §8). Values are space-separated RGB channels so Tailwind
+   can apply <alpha-value>. Light is the default; dark swaps under
+   [data-theme="dark"]. All pairs target WCAG AA (spec §10.8). */
+:root {
+  --ink: 15 27 45; /* #0F1B2D deep navy — primary text/headers */
+  --surface: 245 248 251; /* #F5F8FB cool paper — app background */
+  --panel: 255 255 255; /* #FFFFFF cards/panels */
+  --blueprint: 29 95 168; /* #1D5FA8 primary actions/links/active station */
+  --blueprint-2: 127 168 206; /* #7FA8CE secondary/hover, progress track */
+  --go: 46 125 91; /* #2E7D5B approvals, completed stations, success */
+  --go-soft: 220 239 230; /* #DCEFE6 success backgrounds */
+  --signal: 198 54 44; /* #C6362C destructive, warnings, continuity flags */
+  --signal-soft: 248 227 225; /* #F8E3E1 warning backgrounds */
+  --brass: 140 122 75; /* #8C7A4B sparing accent — meters/dividers */
+}
+
+[data-theme='dark'] {
+  --ink: 226 234 243; /* lifted for contrast on dark surfaces */
+  --surface: 11 20 32; /* #0B1420 ink surface */
+  --panel: 18 32 49; /* #122031 panels */
+  --blueprint: 122 163 214; /* lifted */
+  --blueprint-2: 90 124 160;
+  --go: 90 197 152;
+  --go-soft: 25 51 41;
+  --signal: 232 118 108;
+  --signal-soft: 61 30 28;
+  --brass: 189 168 116;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--surface));
+  color: rgb(var(--ink));
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Respect reduced-motion (spec §8). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible focus ring for keyboard users (spec §10.8 keyboard usability). */
+:focus-visible {
+  outline: 2px solid rgb(var(--blueprint));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
